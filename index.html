@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1b0044;
+      color: #fff;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 60%),
+        linear-gradient(135deg, #120028, #4b1b7a);
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: transparent;
+      z-index: -1;
+    }
+
+    .login-wrapper {
+      width: 100%;
+      max-width: 420px;
+      padding: 25px;
+    }
+
+    .login-card {
+      position: relative;
+      padding: 40px 35px 35px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(155, 89, 182, 0.25), rgba(52, 152, 219, 0.1));
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 25px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    .login-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .login-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px 46px 14px 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+
+    .input-group input::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .input-group input:focus {
+      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
+    }
+
+    .input-icon {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 6px 2px 22px;
+      font-size: 12px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .remember input {
+      accent-color: #fff;
+      width: 13px;
+      height: 13px;
+    }
+
+    .row a {
+      color: #fff;
+      text-decoration: none;
+      opacity: 0.9;
+      transition: opacity 0.15s;
+    }
+
+    .row a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 24px;
+      border: none;
+      background: #ffffff;
+      color: #6c2bd9;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.45);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 22px rgba(0, 0, 0, 0.55);
+    }
+
+    .btn-login:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .register-text {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      opacity: 0.95;
+    }
+
+    .register-text a {
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .register-text a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .login-card {
+        padding: 30px 24px 26px;
+      }
+      .login-title {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="overlay"></div>
+
+  <div class="login-wrapper">
+    <form class="login-card">
+      <div class="login-title">Login</div>
+
+      <div class="input-group">
+        <input type="text" placeholder="Username" required />
+        <span class="input-icon">👤</span>
+      </div>
+
+      <div class="input-group">
+        <input type="password" placeholder="Password" required />
+        <span class="input-icon">🔒</span>
+      </div>
+
+      <div class="row">
+        <label class="remember">
+          <input type="checkbox" />
+          <span>Remember me</span>
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn-login">Login</button>
+
+      <div class="register-text">
+        Don’t have an account? <a href="#">Register</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
